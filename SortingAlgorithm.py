@@ -21,12 +21,12 @@ def counting_sort(array_a, array_b, k):
     mina = min(array_a)
     array_c = [0 for i in range(k)]
     for i in array_a:
-        array_c[i-mina] += 1
+        array_c[i - mina] += 1
     for i in range(1, len(array_c)):
         array_c[i] += array_c[i - 1]
     for i in array_a[::-1]:
-        array_b[array_c[i-mina]-1] = i
-        array_c[i-mina] -= 1
+        array_b[array_c[i - mina] - 1] = i
+        array_c[i - mina] -= 1
 
 
 def partition(array, p, r):
