@@ -1,5 +1,6 @@
 import SortingAlgorithm
 import OptimalTaskScheduling
+import BSTAndRBT
 
 if __name__ == '__main__':
     # 测试快速排序
@@ -15,7 +16,11 @@ if __name__ == '__main__':
     array_b = [0 for i in range(len(array_a))]
     SortingAlgorithm.counting_sort(array_a, array_b, max(array_a) - min(array_a) + 1)
     print("排序后数组: ", array_b)
-    #
+    # 测试二叉查找树
+    print("=================== 测试二叉查找树 ====================")
+    tree = [5, 1, 6, 0, 2, 5, 6]
+    print(BSTAndRBT.judge_bst(tree, 0))
+    # 测试最佳任务调度
     print("================== 测试最佳任务调度 ===================")
     d = [4, 2, 4, 3, 1, 4, 6]
     w = [70, 60, 50, 40, 30, 20, 10]
@@ -28,5 +33,3 @@ if __name__ == '__main__':
     for task_index in OptimalTaskScheduling.task_scheduling(d, new_w)[0]:
         print("a{}".format(task_index), end=' ')
     print("—— 惩罚值:", OptimalTaskScheduling.task_scheduling(d, new_w)[1])
-
-
