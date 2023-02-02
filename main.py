@@ -22,14 +22,20 @@ if __name__ == '__main__':
     print("输入: ", tree, "\n结果: ", BSTAndRBT.judge_bst(tree, 0))
     # 测试红黑树
     print("==================== 测试红黑树 ======================")
-    # tree_input = [1, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-    tree_input = [41, 38, 31, 12, 19, 8]
-    print("依次插入:", tree_input)
+    key_input = [1, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    key_delete = [14, 9, 5]
+    key_delete_node = [BSTAndRBT.RBTNode(0) for i in key_delete]
+    print("依次插入:", key_input)
     rbt = BSTAndRBT.RBT()
-    for i in tree_input:
+    for i in key_input:
         rbtNode = BSTAndRBT.RBTNode(i)
         rbt.RBT_insert(rbtNode)
+        if i in key_delete:
+            key_delete_node[key_delete.index(i)] = rbtNode
     print("中序遍历结果:", rbt.get_inorder())
+    for node in key_delete_node:
+        rbt.RBT_delete(node)
+        print("删除", node.key, "\t结果为:", rbt.get_inorder())
     # 测试最佳任务调度
     print("================== 测试最佳任务调度 ===================")
     d = [4, 2, 4, 3, 1, 4, 6]

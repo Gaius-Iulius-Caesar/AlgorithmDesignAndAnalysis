@@ -40,6 +40,9 @@ class RBT:
         self._root = self.nil
 
     def get_inorder(self):
+        """
+        :return: 中序遍历列表，元素为（颜色，key)
+        """
         array = []
         self.inorder(self._root, array)
         return array
@@ -95,8 +98,8 @@ class RBT:
             y.left = z.left
             y.left.parent = y
             y.color = z.color
-            if y_original_color == Color.BLACK:
-                self.RBT_delete_fixup(x)
+        if y_original_color == Color.BLACK:
+            self.RBT_delete_fixup(x)
 
     def RBT_insert_fixup(self, z):
         while z.parent.color == Color.RED:
