@@ -19,7 +19,17 @@ if __name__ == '__main__':
     # 测试二叉查找树
     print("=================== 测试二叉查找树 ====================")
     tree = [5, 1, 6, 0, 2, 5, 6]
-    print(BSTAndRBT.judge_bst(tree, 0))
+    print("输入: ", tree, "\n结果: ", BSTAndRBT.judge_bst(tree, 0))
+    # 测试红黑树
+    print("==================== 测试红黑树 ======================")
+    # tree_input = [1, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    tree_input = [41, 38, 31, 12, 19, 8]
+    print("依次插入:", tree_input)
+    rbt = BSTAndRBT.RBT()
+    for i in tree_input:
+        rbtNode = BSTAndRBT.RBTNode(i)
+        rbt.RBT_insert(rbtNode)
+    print("中序遍历结果:", rbt.get_inorder())
     # 测试最佳任务调度
     print("================== 测试最佳任务调度 ===================")
     d = [4, 2, 4, 3, 1, 4, 6]
