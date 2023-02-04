@@ -1,10 +1,15 @@
 import numpy as np
+import DivideAndConquer
 import SortingAlgorithm
 import OptimalTaskScheduling
 import BSTAndRBT
 import Backpack_01
 
 if __name__ == '__main__':
+    # 测试最大子数组和
+    print("================== 测试最大子数组和 ===================")
+    nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    print("最大子数组和为: ", DivideAndConquer.max_subarray(nums, 0, len(nums) - 1))
     # 测试快速排序
     print("=================== 测试快速排序 =====================")
     array = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
