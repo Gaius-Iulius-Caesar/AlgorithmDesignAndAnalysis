@@ -1,6 +1,8 @@
+import numpy as np
 import SortingAlgorithm
 import OptimalTaskScheduling
 import BSTAndRBT
+import Backpack_01
 
 if __name__ == '__main__':
     # 测试快速排序
@@ -18,7 +20,7 @@ if __name__ == '__main__':
     print("排序后数组: ", array_b)
     # 测试二叉查找树
     print("=================== 测试二叉查找树 ====================")
-    tree = [5, 1, 6, 0, 2, 5, 6]
+    tree = [5, 1, 4, -1, -1, 3, 6]
     print("输入: ", tree, "\n结果: ", BSTAndRBT.judge_bst(tree, 0))
     # 测试红黑树
     print("==================== 测试红黑树 ======================")
@@ -32,10 +34,10 @@ if __name__ == '__main__':
         rbt.RBT_insert(rbtNode)
         if i in key_delete:
             key_delete_node[key_delete.index(i)] = rbtNode
-    print("中序遍历结果:", rbt.get_inorder())
+    print("中序遍历结果:\n", np.array(rbt.get_inorder()))
     for node in key_delete_node:
         rbt.RBT_delete(node)
-        print("删除", node.key, "\t结果为:", rbt.get_inorder())
+        print("删除", node.key, "结果为:\n", np.array(rbt.get_inorder()))
     # 测试最佳任务调度
     print("================== 测试最佳任务调度 ===================")
     d = [4, 2, 4, 3, 1, 4, 6]
@@ -49,3 +51,11 @@ if __name__ == '__main__':
     for task_index in OptimalTaskScheduling.task_scheduling(d, new_w)[0]:
         print("a{}".format(task_index), end=' ')
     print("—— 惩罚值:", OptimalTaskScheduling.task_scheduling(d, new_w)[1])
+    # 测试01背包问题
+    print("================== 测试01背包问题 ====================")
+    n = int(input("请输入物品数量: "))
+    c = int(input("请输入背包容量: "))
+    w = [int(i) for i in input("请输入物品重量数组，以逗号分割: ").split(',')]
+    v = [int(i) for i in input("请输入物品价值数组，以逗号分割: ").split(',')]
+    print("使用动态规划得到最大价值为: ", Backpack_01.dp_solve(n, c, w, v))
+    print("使用回溯法得到最大价值为: ", Backpack_01.bp_solve(n, c, w, v))
