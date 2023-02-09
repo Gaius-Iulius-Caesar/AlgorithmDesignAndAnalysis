@@ -6,9 +6,16 @@ import BSTAndRBT
 import Backpack_01
 
 if __name__ == '__main__':
+    # 测试两个有序数组的中位数
+    print("=============== 测试两个有序数组的中位数 ================")
+    nums1 = [1, 2, 5, 6, 9]
+    nums2 = [3, 4, 7, 10]
+    print("数组一为: ", nums1, "数组二为: ", nums2)
+    print("中位数为: ", DivideAndConquer.findMedianSortedArrays(nums1, nums2))
     # 测试最大子数组和
     print("================== 测试最大子数组和 ===================")
     nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    print("数组为: ", nums)
     print("最大子数组和为: ", DivideAndConquer.max_subarray(nums, 0, len(nums) - 1))
     # 测试快速排序
     print("=================== 测试快速排序 =====================")

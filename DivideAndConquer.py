@@ -1,3 +1,33 @@
+def findMedianSortedArrays(nums1, nums2):
+    def getKthElement(k):
+        index1, index2 = 0, 0
+        while True:
+            # 特殊情况
+            if index1 == m:  # nums1被排除
+                return nums2[index2 + k - 1]
+            if index2 == n:  # nums2被排除
+                return nums1[index1 + k - 1]
+            if k == 1:  # 寻找第1小的元素
+                return min(nums1[index1], nums2[index2])
+            # 正常情况
+            newIndex1 = min(index1 + k // 2 - 1, m - 1)
+            newIndex2 = min(index2 + k // 2 - 1, n - 1)
+            pivot1, pivot2 = nums1[newIndex1], nums2[newIndex2]
+            if pivot1 <= pivot2:
+                k -= (newIndex1 - index1 + 1)  # 减去已排除的元素数
+                index1 = newIndex1 + 1  # 此下标之前的元素已排除
+            else:
+                k -= (newIndex2 - index2 + 1)  # 减去已排除的元素数
+                index2 = newIndex2 + 1  # 此下标之前的元素已排除
+
+    m, n = len(nums1), len(nums2)
+    totalLength = m + n
+    if totalLength % 2 == 1:
+        return getKthElement((totalLength + 1) // 2)
+    else:
+        return (getKthElement(totalLength // 2) + getKthElement(totalLength // 2 + 1)) / 2
+
+
 def max_subarray(nums, left, right):
     """
     :param nums: 数组
